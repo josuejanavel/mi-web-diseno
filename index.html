@@ -547,12 +547,12 @@ transform: scale(1.05);
 
         <div class="stats">
           <div class="stat-box">
-            <h3>10+</h3>
+            <h3 class="counter" data-target="10">0</h3>
             <span>Años de experiencia</span>
           </div>
 
           <div class="stat-box">
-            <h3>100%</h3>
+            <h3 class="counter" data-target="100">0</h3>
             <span>Diseños personalizados</span>
           </div>
         </div>
@@ -584,6 +584,44 @@ transform: scale(1.05);
   <footer>
     © 2026 - Eficaz Brand
   </footer>
+
+<script>
+const counters = document.querySelectorAll('.counter');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+
+      const counter = entry.target;
+      const target = +counter.dataset.target;
+      const isPercent = target === 100;
+
+      let current = 0;
+      const increment = target / 50;
+
+      const updateCounter = () => {
+        current += increment;
+
+        if (current < target) {
+          counter.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target + (isPercent ? '%' : '+');
+        }
+      };
+
+      updateCounter();
+      observer.unobserve(counter);
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+counters.forEach(counter => {
+  observer.observe(counter);
+});
+</script>
 
 </body>
 </html>
