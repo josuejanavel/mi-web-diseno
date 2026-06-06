@@ -404,6 +404,22 @@ transform: scale(1.05);
 
   display: block;
   margin: 0 auto 30px auto;
+
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  animation: logoIntro 1.2s ease-out forwards;
+}
+
+@keyframes logoIntro {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
   </style>
 </head>
