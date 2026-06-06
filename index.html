@@ -420,6 +420,39 @@ transform: scale(1.05);
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+.hero-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealWord 0.6s ease forwards;
+}
+
+.hero-title span:nth-child(1) { animation-delay: 1.2s; }
+.hero-title span:nth-child(2) { animation-delay: 1.35s; }
+.hero-title span:nth-child(3) { animation-delay: 1.5s; }
+.hero-title span:nth-child(4) { animation-delay: 1.65s; }
+.hero-title span:nth-child(5) { animation-delay: 1.8s; }
+.hero-title span:nth-child(6) { animation-delay: 1.95s; }
+.hero-title span:nth-child(7) { animation-delay: 2.1s; }
+.hero-title span:nth-child(8) { animation-delay: 2.25s; }
+.hero-title span:nth-child(9) { animation-delay: 2.4s; }
+
+@keyframes revealWord {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
   </style>
 </head>
@@ -431,11 +464,17 @@ transform: scale(1.05);
         <img src="logo.png" alt="Logo" class="logo"></div>
 
         
-        <h1>
-          Hacemos que tu marca 
-          <span>sea</span> y se vea
-          <span>profesional.</span>
-        </h1>
+        <h1 class="hero-title">
+  <span>Hacemos</span>
+  <span>que</span>
+  <span>tu</span>
+  <span>marca</span>
+  <span>sea</span>
+  <span>y</span>
+  <span>se</span>
+  <span>vea</span>
+  <span>profesional.</span>
+</h1>
 
         <p>
           Trabajamos junto a empresas y emprendedores construyendo una imagen visual sólida y profesional.
