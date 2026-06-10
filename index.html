@@ -305,17 +305,32 @@ height: 230px;
 overflow: hidden;
 }
 
-.portfolio-image img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-
-transition: transform 0.4s ease;
+.portfolio-image {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
 }
 
-.portfolio-card:hover .portfolio-image img {
-transform: scale(1.05);
+.portfolio-image img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity .8s ease,
+              transform .4s ease;
+}
+
+.portfolio-image img.active {
+  opacity: 1;
+}
+
+.portfolio-card:hover .portfolio-image img.active {
+  transform: scale(1.05);
 }
 
     .portfolio-content {
@@ -629,9 +644,11 @@ transform: scale(1.05);
       <div class="portfolio-grid">
 
   <div class="portfolio-card">
-    <div class="portfolio-image">
-      <img src="branding.jpg" alt="Proyecto Branding">
-    </div>
+    <div class="portfolio-image slider">
+    <img src="branding1.jpg" class="active">
+    <img src="branding2.jpg">
+    <img src="branding3.jpg">
+</div>
 <div class="portfolio-content">
   <h3>Branding</h3>
   <p>Diseñamos la identidad visual de tu negocio para comunicar profesionalismo y generar una imagen memorable.</p>
@@ -640,9 +657,11 @@ transform: scale(1.05);
   </div>
 
   <div class="portfolio-card">
-    <div class="portfolio-image">
-      <img src="redes.jpg" alt="Proyecto Redes Sociales">
-    </div>
+    <div class="portfolio-image slider">
+    <img src="carteleria1.jpg" class="active">
+    <img src="carteleria2.jpg">
+    <img src="carteleria3.jpg">
+</div>
 <div class="portfolio-content">
   <h3>Cartelería</h3>
   <p>Cartelería personalizada para que tu negocio se destaque y comunique su identidad de forma profesional y atractiva.</p>
@@ -652,9 +671,11 @@ transform: scale(1.05);
   </div>
 
   <div class="portfolio-card">
-    <div class="portfolio-image">
-      <img src="web.jpg" alt="Proyecto Diseño Web">
-    </div>
+    <div class="portfolio-image slider">
+    <img src="web1.jpg" class="active">
+    <img src="web2.jpg">
+    <img src="web3.jpg">
+</div>
 
 
 <div class="portfolio-content">
@@ -766,6 +787,28 @@ const observer = new IntersectionObserver(entries => {
 
 counters.forEach(counter => {
   observer.observe(counter);
+});
+</script>
+
+<script>
+const sliders = document.querySelectorAll('.slider');
+
+sliders.forEach(slider => {
+
+  const images = slider.querySelectorAll('img');
+
+  let current = 0;
+
+  setInterval(() => {
+
+    images[current].classList.remove('active');
+
+    current = (current + 1) % images.length;
+
+    images[current].classList.add('active');
+
+  }, 3500);
+
 });
 </script>
 
