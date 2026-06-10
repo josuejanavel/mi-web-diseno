@@ -185,31 +185,92 @@
       gap: 24px;
     }
 
-    .service-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 35px;
-      border-radius: 28px;
-      transition: 0.3s;
-    }
+.service-card {
+  position: relative;
+  overflow: hidden;
 
-    .service-card:hover {
-      transform: translateY(-6px);
-    }
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  padding: 35px;
+  border-radius: 28px;
+
+  transition: all .4s ease;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+
+  background: linear-gradient(
+    135deg,
+    #ff7900,
+    #c600af
+  );
+
+  border-radius: 30px;
+  opacity: 0;
+  transition: .4s;
+  z-index: -2;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+
+  background: #111;
+  border-radius: 26px;
+  z-index: -1;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
 
     .service-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 18px;
-      background: rgba(0, 217, 255, 0.1);
-      margin-bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: #00d9ff;
-    }
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+
+  transition: all .4s ease;
+}
+
+    .service-card:hover .service-icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.service-card:hover .service-icon i {
+  animation: pulseIcon .8s ease;
+}
+
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
 
     .service-card h3 {
       font-size: 28px;
@@ -396,16 +457,20 @@ transform: scale(1.05);
 /* ABAJO DE TODO */
 
 .graphic-icon {
-  color: red;
+  color: #ff7900;
+  background: rgba(255,121,0,.12);
 }
 
 .web-icon {
-  color: blue;
+  color: #00d9ff;
+  background: rgba(0,217,255,.12);
 }
 
 .social-icon {
-  color: green;
+  color: #c600af;
+  background: rgba(198,0,175,.12);
 }
+
 @media (max-width: 768px) {
   .mobile-hide {
     display: none;
