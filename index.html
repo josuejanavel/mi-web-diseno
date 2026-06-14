@@ -174,7 +174,24 @@
       background: linear-gradient(135deg, #ff7900, #c600af);
     }
 
-   .dark-box {
+   .dark-box,
+.gradient-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 20px;
+
+  font-size: 24px;
+  font-weight: 500;
+
+  color: #d5d5d5;
+
+  transition: all .35s ease;
+}
+
+.dark-box {
   background:
     linear-gradient(
       135deg,
@@ -184,23 +201,8 @@
 
   border: 1px solid rgba(255,255,255,0.12);
 }
-.gradient-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 
-  padding: 20px;
- 
-
-  font-size: 24px;
-  font-weight: 500;
-
-  color: #d5d5d5;
-
-  transition: all .35s ease;
-
-  .box:hover .dark-box,
+.box:hover .dark-box,
 .box:hover .gradient-box {
   color: #ffffff;
 
